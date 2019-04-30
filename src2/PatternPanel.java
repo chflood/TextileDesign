@@ -32,8 +32,8 @@ public class PatternPanel extends JPanel {
 
     PatternPanel() {
 	initializeColors();
-	JPanel panel = new JPanel();
-	add(panel,BorderLayout.CENTER);
+	//	JPanel panel = new JPanel();
+	//	add(panel,BorderLayout.CENTER);
         Button resetColors = new Button("Reset Colors");
         resetColors.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
