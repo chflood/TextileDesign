@@ -17,20 +17,21 @@ class Sock {
     public static Sock getSock() { return sock;}
 
     //    public static void repaint() {frame.repaint();}
-	
+
 
     public Sock() {
-	
+
 	frame.setPreferredSize(new Dimension(1000,1000));
-	
+
 	frame.setBounds(0,0,1500,1500);
 	frame.setBackground(Color.gray);
 	frame.setLayout(new GridLayout(0,2));
 
 	frame.add(footPanel);
+  frame.add(sockPanel);
 	frame.add(colorPanel);
 	//	frame.add(patternPanel);
-	frame.add(sockPanel);
+
 	frame.pack();
 	frame.setLocationRelativeTo(null);
 	frame.setVisible(true);
@@ -57,7 +58,7 @@ class Sock {
         }
 
 	sock = new Sock();
-	
+
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -75,5 +76,3 @@ class Sock {
 	    });
     }
 }
-
-    

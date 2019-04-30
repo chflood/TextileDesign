@@ -10,7 +10,7 @@ class SockPanel extends JPanel {
 	Button updateSock = new Button("Display Sock");
         updateSock.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-                repaint();  
+                repaint();
             }
          });
 	add(updateSock, BorderLayout.SOUTH);
@@ -56,7 +56,7 @@ class SockPanel extends JPanel {
 		}
 	    }
 	}
-	
-	updateSock(g, sock.getPattern(), 0, 0 , sock.getLength(), sock.getCircumference());
+
+	updateSock(g, sock.getPattern(), 0, 0, sock.getLength(), sock.getCircumference());
     }
 }
