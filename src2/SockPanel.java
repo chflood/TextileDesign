@@ -20,14 +20,15 @@ class SockPanel extends JPanel {
     public void updateSock(Graphics g, Color[][] pattern, int x, int y, int length, int circumference) {
       int w = this.getWidth()-x;
       int h = this.getHeight()-y;
-      int convertedLength = (int)(((double)(w/2))*mapNum((double)circumference, 12.0, 120.0, 0.1, 1.0));
+      int convertedCircumference = (int)(((double)(w/2))*mapNum((double)circumference, 12.0, 120.0, 0.1, 1.0));
+      int convertedLength = (int)(((double)(w/4))*mapNum((double)length, 12.0, 120.0, 0.1, 1.0));
 
-       for(int i = x;i<x+convertedLength;i+=10){
+       for(int i = x;i<x+convertedCircumference;i+=10){
 	   for(int j = y+(h/6);j<(y+h/6*4);j+=10){
 	       g.setColor(pattern[(i/10)%pattern.length][(j/10)%pattern[0].length]);
          for(int k = 0;k<10;k++){
            for(int l = 0;l<10;l++){
-             if(i+k<x+convertedLength){
+             if(i+k<x+convertedCircumference){
                if(j+l<(y+h/6*4)) {
                  g.fillRect((i+k), (j+l), 1, 1);
                }
@@ -38,12 +39,12 @@ class SockPanel extends JPanel {
 
 	   }
        }
-       for(int i = x+convertedLength;i<x+w/4*3;i+=10){
+       for(int i = x+convertedCircumference;i<(x+convertedCircumference+convertedLength);i+=10){
 	   for(int j = y+((h/3)*2);j<y+h-2;j+=10){
 	       g.setColor(pattern[(i/10)%pattern.length][(j/10)%pattern[0].length]);
          for(int k = 0;k<10;k++){
            for(int l = 0;l<10;l++){
-             if(i+k<x+w/4*3){
+             if(i+k<(x+convertedCircumference+convertedLength)){
                if(j+l<(y+h)) {
                  g.fillRect((i+k), (j+l), 1, 1);
                }
@@ -57,16 +58,16 @@ class SockPanel extends JPanel {
    public void generateSock(Graphics g, int x, int y, int length, int circumference) {
      int w = this.getWidth()-x;
      int h = this.getHeight()-y;
-     int convertedLength = (int)(((double)(w/2))*mapNum((double)circumference, 12.0, 120.0, 0.1, 1.0));
-
+     int convertedCircumference = (int)(((double)(w/2))*mapNum((double)circumference, 12.0, 120.0, 0.1, 1.0));
+     int convertedLength = (int)(((double)(w/4))*mapNum((double)length, 12.0, 120.0, 0.1, 1.0));
 
      g.setColor(Color.RED);
-     g.drawRect(x, y, convertedLength, h/6);
-     g.drawArc(x ,y+(h/3), convertedLength*2, h/3*2, 180, 90);
-     g.drawArc(x+convertedLength, y+(h/3)*2, w/2, h/3, 90, -180);
+     g.drawRect(x, y, convertedCircumference, h/6);
+     g.drawArc(x ,y+(h/3), convertedCircumference*2, h/3*2, 180, 90);
+     g.drawArc(x+convertedCircumference+(convertedLength)-(w/8), y+(h/3)*2, w/4, h/3, 90, -180);
      g.setColor(Color.BLUE);
-     g.drawRect(x, y+(h/6), convertedLength, (h/2));
-     g.drawRect(x+(w/2), y+((h/3)*2), (w/4), h/3);
+     g.drawRect(x, y+(h/6), convertedCircumference, (h/2));
+     g.drawRect(x+convertedCircumference, y+((h/3)*2), convertedLength, h/3);
 
    }
 
@@ -103,8 +104,8 @@ class SockPanel extends JPanel {
 	}
 
   //g.setBackground(255);
-  generateSock(g, 0, 50, sock.getLength(), sock.getCircumference());
-	updateSock(g, sock.getPattern(), 0, 50, sock.getLength(), sock.getCircumference());
 
+	updateSock(g, sock.getPattern(), 0, 50, sock.getLength(), sock.getCircumference());
+  generateSock(g, 0, 50, sock.getLength(), sock.getCircumference());
     }
 }
