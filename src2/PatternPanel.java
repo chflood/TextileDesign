@@ -21,10 +21,10 @@ public class PatternPanel extends JPanel {
     public void resetColors() {
 	for (int i = 0; i < numColors; i++) {
 	    boxes[i] = new ClickableBox(i/10, i%10, 10, 10, Color.black, boxColors[i], true, this);
-	    pattern[i/10][i%10] = boxColors[i];	    
+	    pattern[i/10][i%10] = boxColors[i];
 	}
     }
-	
+
     public void paintComponent(Graphics g) {
 	for (int i = 0; i < boxes.length; i++)
 	    boxes[i].draw(g);
@@ -32,21 +32,21 @@ public class PatternPanel extends JPanel {
 
     PatternPanel() {
 	initializeColors();
-	JPanel panel = new JPanel();
-	add(panel,BorderLayout.CENTER);
+	//	JPanel panel = new JPanel();
+	//	add(panel,BorderLayout.CENTER);
         Button resetColors = new Button("Reset Colors");
         resetColors.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
                 resetColors();
-                repaint();  
+                //initializeColors();
+                repaint();
             }
          });
         add(resetColors,BorderLayout.SOUTH);
-       
+
     }
 
     Color[][] getPattern() {
 	return pattern;
     }
 }
-

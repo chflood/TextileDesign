@@ -12,6 +12,7 @@ class Sock {
     static ColorPanel colorPanel = new ColorPanel();
     static PatternPanel  patternPanel = new PatternPanel();
     static SockPanel sockPanel = new SockPanel();
+    static KnittingPanel knittingPanel = new KnittingPanel();
     static Sock sock = new Sock();
 
     public static Sock getSock() { return sock;}
@@ -31,7 +32,8 @@ class Sock {
   frame.add(sockPanel);
 	frame.add(colorPanel);
 	//	frame.add(patternPanel);
-
+	frame.add(sockPanel);
+	frame.add(knittingPanel);
 	frame.pack();
 	frame.setLocationRelativeTo(null);
 	frame.setVisible(true);
