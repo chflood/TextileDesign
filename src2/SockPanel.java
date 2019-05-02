@@ -23,6 +23,8 @@ class SockPanel extends JPanel {
       int convertedCircumference = (int)(((double)(w/2))*mapNum((double)circumference, 12.0, 120.0, 0.1, 1.0));
       int convertedLength = (int)(((double)(w/4))*mapNum((double)length, 12.0, 120.0, 0.1, 1.0));
 
+      System.out.println("w = " + w + " h = " + h + " convertedCircumference = " + convertedCircumference + " converted length " + convertedLength + " length = " + length + " circ = " + circumference);
+
        for(int i = x;i<x+convertedCircumference;i+=10){
 	   for(int j = y+(h/6);j<(y+h/6*4);j+=10){
 	       g.setColor(pattern[(i/10)%pattern.length][(j/10)%pattern[0].length]);
@@ -83,18 +85,18 @@ class SockPanel extends JPanel {
 	Sock sock = Sock.getSock();
 	int l; int w;
 	Color[][] pattern;
-	if (sock.getLength() > 0)
-	    l = sock.getLength();
+	if (sock.getSockLength() > 0)
+	    l = sock.getSockLength();
 	else l = 10;
-	if (sock.getCircumference() > 0)
-	    w = sock.getCircumference();
+	if (sock.getSockWidth() > 0)
+	    w = sock.getSockWidth();
 	else w = 10;
-	if (sock.getPattern() != null)
-	    pattern = sock.getPattern();
+	if (sock.getSockPattern() != null)
+	    pattern = sock.getSockPattern();
 	else {
 	    pattern = new Color[l][w];
-	    for (int i = 0; i < w; i++) {
-		for (int j = 0; j < l; j++) {
+	    for (int i = 0; i < l; i++) {
+		for (int j = 0; j < w; j++) {
 		    pattern[i][j] = Color.black;
 		    if ((i %2) == 0)
 			pattern[i][j] = Color.white;
@@ -105,7 +107,7 @@ class SockPanel extends JPanel {
 
   //g.setBackground(255);
 
-	updateSock(g, sock.getPattern(), 0, 50, sock.getLength(), sock.getCircumference());
-  generateSock(g, 0, 50, sock.getLength(), sock.getCircumference());
+	updateSock(g, sock.getSockPattern(), 0, 50, sock.getSockLength(), sock.getSockWidth());
+	generateSock(g, 0, 50, sock.getSockLength(), sock.getSockWidth());
     }
 }

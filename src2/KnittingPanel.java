@@ -5,6 +5,8 @@ import java.util.*;
 import javax.swing.*;
 
 public class KnittingPanel extends JPanel {
+
+    int start = 0;
     KnittingPanel() {
 	Button inst =  new Button("Hand Knitting Instructions");
 	inst.addActionListener(new ActionListener() {
@@ -16,25 +18,25 @@ public class KnittingPanel extends JPanel {
     }
 
     void toe(Graphics g) {
-	g.drawString("Cast on", 0,10);
-	g.drawString("Knit the Toe", 0, 20);
+	g.drawString("Cast on 32 stitches", 0,start +=10);
+	g.drawString("Increase every other row to 64 stitches", 0, start+=10);
     }
 
     void forefoot(Graphics g) {
-	g.drawString("Knit the Forefoot", 0, 30);
+	g.drawString("Knit for 9 inches following pattern", 0, start+=10);
     }
 
     void heel(Graphics g) {
-	g.drawString("Knit the heel", 0, 40);
+	g.drawString("Short row half the stitches for the heel", 0, start+=10);
     }
 
     void calf(Graphics g) {
-	g.drawString("Knit the calf", 0, 50);
-	g.drawString("bindoff", 0, 60);
+	g.drawString("Knit the calf for 9 inches", 0, start+=10);
+	g.drawString("bindoff", 0, start+=10);
     }
 
     public void paintComponent(Graphics g) {
-	g.drawString("Knitting Instructions", 0,0);
+	g.drawString("Knitting Instructions:", 0,start += 10);
 	toe(g);
 	forefoot(g);
 	heel(g);
